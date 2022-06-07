@@ -116,3 +116,49 @@ class Grafo:
         except Exception as e:
             print(e)
 
+
+    def dfs(self, inicio, objetivo, ruta = [], visitado = set()):
+        """
+        Este método imprime el recorrido dfs generado a través de un nodo inicial y un nodo objetivo.
+        Genera una lista de los nodos visitados y muestra el recorrido realizado hasta llegar al objetivo. 
+
+        Parametros
+        ----------
+        ruta : lista
+        visitado : diccionario
+
+        Retorno
+        -------
+        ruta / resultado / None 
+        """
+        try:
+            # Se agrega el nodo inicial a la lista de visitados
+            visitado.add(inicio)
+            # Se agrega el nodo inicial a la lista de ruta
+            ruta.append(inicio)
+        except Exception as e:
+            print(e)
+        
+        try:
+            # Si el nodo inicial es el objetivo se imprime el recorrido
+            if inicio == objetivo:
+                print("Recorrido: ", ruta)
+                return ruta
+
+            # Se recorre la lista de adyacencia del nodo inicial
+            for(vecino, peso) in self.m_lista_adyacencia[inicio]:
+                # Si el nodo vecino no ha sido visitado se llama al metodo dfs con el nodo vecino como inicio
+                if vecino not in visitado:
+                    #se asigna a la variable resultado el nodo vecino, el objetivo, la ruta y la lista de nodos visitados
+                    resultado = self.dfs(vecino, objetivo, ruta, visitado) 
+                    # Si el resultado no es nulo se retorna el resultado
+                    if resultado is not None:
+                        #Retorna resultado
+                        return resultado 
+        except Exception as e:
+            print(e)
+                    
+        # elimina y retorna el nodo inicial de la ruta
+        ruta.pop() 
+        return None 
+
