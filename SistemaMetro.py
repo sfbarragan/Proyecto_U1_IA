@@ -92,3 +92,27 @@ class Grafo:
                 self.m_lista_adyacencia[nodo2].add((nodo1, peso))
         except Exception as e:
             print(e)
+
+
+    def imprimir_grafo(self):
+        """
+        Este método imprime el grafo generado a través de la lista de adyacencia.
+
+        Parametros
+        ----------
+        Nada
+
+        Retorno
+        -------
+        Nada 
+        """
+
+        try:
+            # recorre la lista de adyacencia
+            for llave in self.m_lista_adyacencia.keys():
+                # imprime el cada nodo almacenado en la lista de adyacencia.
+                print("nodo", llave, ": ", self.m_lista_adyacencia[llave])
+
+        except Exception as e:
+            print(e)
+
