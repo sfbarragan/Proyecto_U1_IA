@@ -20,7 +20,7 @@ class Grafo:
      Métodos
     ----------
 
-    __init__(self, num_de_nodos, dirigido=True)
+    __init__(self, num_de_nodos, estaciones, dirigido=True)
         Este metodo funcionara como el constuctor de la clase `Grafo()`, recibe el Numero de nodos (m_num_nodos),
         crea el rango de nodos (numero_nodos), determina el tipo de grafo si es dirigido o no dirigido (m_dirigido) y
         creara el diccionario de la lista de adyacencia.
@@ -35,7 +35,7 @@ class Grafo:
         Método que imprime el recorrido BFS de un vértice fuente dado.
     """
 
-    def __init__(self, numero_nodos, dirigido=True):
+    def __init__(self, numero_nodos, estaciones, dirigido=True):
         """
         Este metodo funcionara como el constuctor de la clase Grafo(), recibe el Numero de nodos (m_num_nodos),
         crea el rango de nodos (numero_nodos), determina el tipo de grafo si es dirigido o no dirigido (m_dirigido) y
@@ -50,8 +50,10 @@ class Grafo:
             Rango de nodos sobre los que trabajara el grafo.
         m_dirigido : boolean
             Tipo de nodo dirigido o no dirigido.
-        m_lista_adyacencia : diccionario
+        m_lista_adyacencia : {}
             Diccionario que almacena el valor de los nodos
+        m_estaciones : {}
+            Diccionario que almacena de las estaciones
         """
         try:
              # Se asigna el valor del numero de nodos a través del parametro recibido
@@ -60,6 +62,8 @@ class Grafo:
             self.m_nodos = range(self.m_numero_nodos)
             # se define el tipo de grafo
             self.m_dirigido = dirigido
+            # se crea el diccionario con los nodos
+            self.m_estaciones = estaciones
             
             # Se crea el diccionario de la lista de adyacencia
             self.m_lista_adyacencia = {nodo: set() for nodo in self.m_nodos}
@@ -135,7 +139,7 @@ class Grafo:
             # Se agrega el nodo inicial a la lista de visitados
             visitado.add(inicio)
             # Se agrega el nodo inicial a la lista de ruta
-            ruta.append(inicio)
+            ruta.append(estaciones[inicio])
         except Exception as e:
             print(e)
         
@@ -157,8 +161,38 @@ class Grafo:
                         return resultado 
         except Exception as e:
             print(e)
-                    
-        # elimina y retorna el nodo inicial de la ruta
-        ruta.pop() 
-        return None 
 
+        try:
+            # Si el resultado es nulo se retorna None        
+            ruta.pop() 
+            return None
+        except Exception as e:
+            print(e)
+
+
+
+if __name__ == "__main__":
+    """
+    Dentro de la clase main se instancia a la clase Grafo para acceder a sus metodos.
+    """
+    #Diccionario
+    estaciones = {0:"Valdecarro",1:"Cuatro caminos",2:"Alto Moncloa",3:"Pinar de Chamartin",4:"Casa de campo",5:"Circular",6:"Hospital Henares Pitis",7:"Aeropuerto", 8:"Paco de Lucía", 9:"Hospital infante Sofia", 10:"Plaza Eliptica la fortuna", 11:"Metro sur", 12:"Opera", 13:"Las tablas", 14:"Aravaca", 15:"Puerta de Boadilla", 16:"San Ferrin-Oicasur", 17:"Estación de arte", 18:"Valdezarza", 19:"Lucero "}
+    
+    print("Caso de Prueba 1")
+    grafo1 = Grafo(5, estaciones)#Se instancia la clase Grafo
+
+    # Se agrega los bordes del grafo con valor peso = 1 por defecto
+    grafo1.crear_grafo(0, 2, 10)
+    grafo1.crear_grafo(0, 3, 10) 
+    grafo1.crear_grafo(0, 4, 25) 
+
+
+    grafo1.crear_grafo(1, 3)
+    grafo1.crear_grafo(2, 3) 
+    grafo1.crear_grafo(3, 4) 
+
+    grafo1.imprimir_grafo() #Imprime la lista de adyacencia
+
+    ruta_transversal1 = [] # Se inicializa la variable ruta_transversal
+    ruta_transversal1 = grafo1.dfs(0, 3) # Se almacena el recorrido dfs en la variable ruta_transversal
+    print(f"La ruta transversal desde el nodo 0 al nodo 3 es {ruta_transversal1}") #Imprime el recorriodo dfs
