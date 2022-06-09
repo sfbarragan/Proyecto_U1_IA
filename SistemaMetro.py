@@ -142,14 +142,13 @@ class Grafo:
             # Se agrega el nodo inicial a la lista de visitados
             visitado.add(inicio)
             # Se agrega el nodo inicial a la lista de ruta
-            ruta.append(estaciones[inicio])
+            ruta.append(self.m_estaciones[inicio])
         except Exception as e:
             print(e)
         
         try:
             # Si el nodo inicial es el objetivo se imprime el recorrido
             if inicio == objetivo:
-                print("Recorrido: ", ruta)
                 return ruta
 
             # Se recorre la lista de adyacencia del nodo inicial
@@ -180,7 +179,6 @@ if __name__ == "__main__":
     """
 
     try:
-
         #Se crea el diccionario con las estaciones del tren
         estaciones = {0:"Valdecarro",1:"Cuatro caminos",2:"Alto Moncloa",3:"Pinar de Chamartin",4:"Casa de campo",5:"Circular",6:"Hospital Henares Pitis",7:"Aeropuerto", 8:"Paco de Lucía", 9:"Hospital infante Sofia", 10:"Plaza Eliptica la fortuna", 11:"Metro sur", 12:"Opera", 13:"Las tablas", 14:"Aravaca", 15:"Puerta de Boadilla", 16:"San Ferrin-Oicasur", 17:"Estación de arte", 18:"Valdezarza", 19:"Lucero "}
         
@@ -230,7 +228,6 @@ if __name__ == "__main__":
         g.crear_grafo(5, 10, 17) 
         g.crear_grafo(5, 9, 30) 
 
-        #Aqui
         g.crear_grafo(6, 5, 10)
         g.crear_grafo(6, 1, 11) 
         g.crear_grafo(6, 9, 12) 
@@ -283,22 +280,36 @@ if __name__ == "__main__":
         g.crear_grafo(19, 5, 2)
 
 
-        g.imprimir_grafo() #Imprime la lista de adyacencia
+        while(True):
+            op = int(input("1. Mostrar Estaciones \n 2. Mostrar Grafo \n 3. Buscar Ruta \n 4. Salir"))
 
-        ruta_transversal = [] # Se inicializa la variable ruta_transversal
+            if op == 1:
+                print(estaciones)
+
+            elif(op == 2):
+                g.imprimir_grafo() #Imprime la lista de adyacencia
+        
+            elif(op == 3):
+                ruta_transversal = [] # Se inicializa la variable ruta_transversal
+
+                while true:
+                    #Se pide al usuario la estación inicial
+                    estacion_inicial = int(input("Ingrese la estación inicial")) 
+                    #Se pide al usuario que ingrese la estación objetivo
+                    estacion_objetivo = int(input("Ingrese la estación objetivo"))    
+                    if(estacion_inicial >= 0 and estacion_inicial <= 19 and estacion_objetivo >= 0 and estacion_objetivo <= 19):
+                        ruta_transversal = g.dfs(estacion_inicial, estacion_objetivo) # Se almacena el recorrido dfs en la variable ruta_transversal
+                        print(f"La ruta para llegar al destino es:  {ruta_transversal}") #Imprime el recorriodo dfs
+                        break
+                    else:
+                        print("Se ingreso una estación no válida")
         
 
-        while true:
-            #Se pide al usuario la estación inicial
-            estacion_inicial = int(input("Ingrese la estación inicial")) 
-            #Se pide al usuario que ingrese la estación objetivo
-            estacion_objetivo = int(input("Ingrese la estación objetivo"))    
-            if(estacion_inicial >= 0 and estacion_inicial <= 19 and estacion_objetivo >= 0 and estacion_objetivo <= 19):
-                ruta_transversal = g.dfs(estacion_inicial, estacion_objetivo) # Se almacena el recorrido dfs en la variable ruta_transversal
-                print(f"La ruta para llegar al destino es:  {ruta_transversal}") #Imprime el recorriodo dfs
+            elif op == 4:
                 break
+
             else:
-                print("Se ingreso una estación no válida")
+                print("Opción invalida, intente de nuevo")
             
     except Exception as e:
-            print(e)
+        print(e)
