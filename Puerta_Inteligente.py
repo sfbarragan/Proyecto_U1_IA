@@ -57,8 +57,7 @@ def puerta_Inteligente():
                     print("La puerta Inteligente esta abierta en la HABITACION 1")
                     # Muestra el costo actual.
                     print("El costo actual es: " + str(costo))
-                    llave = input(
-                        "La llave se encuentra dentro del rango (si o no): ")
+                    llave = input("La llave se encuentra dentro del rango (si o no): ")
 
                     if (llave == 'si'):
 
