@@ -90,8 +90,7 @@ def puerta_Inteligente():
                     else:
                         print("Opción Inválida!!!")
 
-                    llave = input(
-                        "La llave se encuentra dentro del rango (si o no): ")
+                    llave = input("La llave se encuentra dentro del rango (si o no): ")
 
                     if (llave == 'si'):
                         if(ubicacion3 == '1'):
