@@ -1,8 +1,5 @@
 from queue import Queue
 
-from sklearn import tree
-from sqlalchemy import true
-
 
 class Grafo:
     """
@@ -281,7 +278,7 @@ if __name__ == "__main__":
 
 
         while(True):
-            op = int(input("1. Mostrar Estaciones \n 2. Mostrar Grafo \n 3. Buscar Ruta \n 4. Salir"))
+            op = int(input("Menú de opciones \n 1. Mostrar Estaciones \n 2. Mostrar Grafo \n 3. Buscar Ruta \n 4. Salir"))
 
             if op == 1:
                 print(estaciones)
@@ -292,7 +289,7 @@ if __name__ == "__main__":
             elif(op == 3):
                 ruta_transversal = [] # Se inicializa la variable ruta_transversal
 
-                while true:
+                while True:
                     #Se pide al usuario la estación inicial
                     estacion_inicial = int(input("Ingrese la estación inicial")) 
                     #Se pide al usuario que ingrese la estación objetivo
