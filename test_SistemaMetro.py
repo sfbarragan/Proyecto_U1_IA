@@ -1,9 +1,17 @@
+# Se importa la libreria unittest
 import unittest
 
+# Se importa la clase Grafo de SistemaMetro.py
 from SistemaMetro import Grafo
 
 
 class TestGrafo(unittest.TestCase):
+    """
+    Esta clase ejecuta las pruebas automáticas.
+    
+    Métodos:
+        test_grafo(): Este método testea el grafo.
+    """
 
     def test_grafo(self):
         """
@@ -18,7 +26,6 @@ class TestGrafo(unittest.TestCase):
 
         # Se agrega los bordes del grafo con valor peso correspondiente
         g.llenar_grafo(g)
-        g.imprimir_grafo()
 
         # Se agrega las estaciones sobre las cuales se realizará el recorrido del metro a ser evaluado
         self.assertEqual(g.dfs(2, 7, ruta = [], visitado = set()), ['Alto Moncloa', 'Circular', 'Cuatro caminos', 'Hospital Henares Pitis', 'Hospital infante Sofia', 'Casa de campo', 'Paco de Lucía', 'Pinar de Chamartin', 'Aeropuerto'])
@@ -27,7 +34,8 @@ class TestGrafo(unittest.TestCase):
         # Se agrega las estaciones sobre las cuales se realizará el recorrido del metro a ser evaluado
         self.assertEqual(g.dfs(5, 10, ruta = [], visitado = set()), ['Circular', 'Plaza Eliptica la fortuna'])
 
-
+# Ejecucion de las pruebas.
 if __name__ == '__main__':
+    #Se ejecuta el test
     unittest.main(argv=['ignored', '-v'], exit=False)
     
