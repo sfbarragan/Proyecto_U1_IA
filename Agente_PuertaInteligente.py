@@ -103,3 +103,107 @@ if __name__ == '__main__':
                 print("Gracias por usar el sistema")
                 # Se termina el bucle para el ingreso de una ubicación valida.
                 break
+            
+            # Si la ubicacion ingresada es correcta.
+            else:
+                # Se define un bucle para el ingreso de un estado valido
+                while True:
+                    # Se solicita el ingreso del estado de la puerta inteligente en la ubicación indicada.
+                    estado = input("Por favor ingrese el estado de la puerta, Porfavor Ingrese '0' (para indicar que esta abierta) o '1' (Para indicar que esta cerrada) \n Introduzca la palabra 'SALIR' para salir del sistema\n")
+                    
+                    # Si el estado ingresado es diferente a 0 o 1.
+                    if estado != '0' and estado != '1':
+                        # Se imprime un mensaje de error.
+                        print("El estado no es correcto, Por favor intente de nuevo\n")
+                        
+                    # Si el estado ingresado es igual a SALIR.
+                    elif ubicacion == 'SALIR':
+                        # Se imprime un mensaje de despedida.
+                        print("Gracias por usar el sistema")
+                        # Se termina el bucle para el ingreso de un estado valido.
+                        break
+                    
+                    # Si el estado ingresado es correcto.
+                    else:
+                        # Se define un bucle para el ingreso de una llave valida.
+                        while True:
+                            # Se solicita el ingreso de la llave, si esta dentro o no del rango de acción de la puerta.
+                            llave = input("Por favor ingrese si la llave se encuentra dentro del rango de la puerta, Porfavor Ingrese 'si' (si se encuentra dentro de rango) o 'no' (no se encuentra dentro de rango) \n Introduzca la palabra 'SALIR' para salir del sistema\n")
+                            
+                            # Si la llave ingresada es incorrecta.
+                            if llave != 'si' and llave != 'SI' and llave != 'no' and llave != 'NO' and llave != 'SALIR':
+                                # Se imprime un mensaje de error.
+                                print("La llave no es correcta, Por favor intente de nuevo\n")
+                                
+                            # Si la llave ingresada es igual a SALIR.
+                            elif llave == 'SALIR':
+                                # Se imprime un mensaje de despedida.
+                                print("Gracias por usar el sistema")
+                                # Se termina el bucle para el ingreso de una llave valida.
+                                break
+                            
+                            # Si la llave ingresada es correcta.
+                            else:
+                                # Se realiza las acciones correspondientes para la ubicacion y estado ingresados por el usuario.
+                                costo = int(puerta.definirHabitacion(ubicacion, estado, costo, llave, estadoObjetivo))
+                                
+                                # Se establece un bucle que recorre el diccionario con la ubicaciones.
+                                for key, value in estadoObjetivo.items():
+                                    # Si la ubicacion obtenida en el bucle es diferente a la ingresada por el usuario.
+                                    if key != ubicacion:
+                                        # Se establece un bucle para el ingreso de un estado valido.
+                                        while True:
+                                            # Se imprime la ubicación actual
+                                            print("\nEl usuario se mueve a la ", key)
+                                            # Se solicita el ingreso del estado de la puerta inteligente en la ubicación indicada.
+                                            estados = input("Por favor ingrese el estado de la puerta, Porfavor Ingrese '0' (para indicar que esta abierta) o '1' (Para indicar que esta cerrada) \n Introduzca la palabra 'SALIR' para salir del sistema\n")
+                                            # Si el estado ingresado es diferente a 0 o 1.
+                                            if estados != '0' and estados != '1' and estados != 'SALIR':
+                                                # Se imprime un mensaje de error.
+                                                print("El estado no es correcto, Por favor intente de nuevo\n")
+                                                
+                                            # Si el estado ingresado es igual a SALIR.
+                                            elif estados == 'SALIR':
+                                                # Se imprime un mensaje de despedida.
+                                                print("Gracias por usar el sistema")
+                                                # Se termina el bucle para el ingreso de un estado valido.
+                                                break
+                                            # Si el estado ingresado es correcto.
+                                            else:
+                                                # Se define un bucle para el ingreso de una llave valida.
+                                                while True:
+                                                    # Se solicita el ingreso de la llave, si esta dentro o no del rango de acción de la puerta.
+                                                    llave = input("Por favor ingrese si la llave se encuentra dentro del rango de la puerta, Porfavor Ingrese 'si' (si se encuentra dentro de rango) o 'no' (no se encuentra dentro de rango) \n Introduzca la palabra 'SALIR' para salir del sistema\n")
+                                                    # Si la llave ingresada es incorrecta.
+                                                    if llave != 'si' and llave != 'SI' and llave != 'no' and llave != 'NO' and llave != 'SALIR':
+                                                        # Se imprime un mensaje de error.
+                                                        print("La llave no es correcta, Por favor intente de nuevo\n")
+
+                                                    # Si la llave ingresada es igual a SALIR.
+                                                    elif llave == 'SALIR':
+                                                        # Se imprime un mensaje de despedida.
+                                                        print("Gracias por usar el sistema")
+                                                        # Se termina el bucle para el ingreso de una llave valida.
+                                                        break
+                                                    
+                                                    # Si la llave ingresada es correcta.
+                                                    else:
+                                                        # Se realiza las acciones correspondientes para la ubicacion y estado indicados en el bucle.
+                                                        costo = int(puerta.definirHabitacion(key, estados, costo, llave, estadoObjetivo))
+                                                        # Se termina el bucle para el ingreso de una llave valida.
+                                                        break
+                                                # Se termina el bucle para el ingreso de un estado valido.
+                                                break
+                                # Se imprime el costo total.    
+                                print("\nEl costo total de abrir las puertas es de ", costo, " \n")
+                                # Se imprime el estado objetivo de la puerta en cada ubicación.
+                                print(estadoObjetivo)
+                            # Se termina el bucle para el ingreso de una llave valida.
+                            break
+                    # Se termina el bucle para el ingreso de un estado valido.
+                    break
+    # Se captura la excepcion.           
+    except Exception as e: 
+        # Se imprime el mensaje de error.
+        print(e)  
+    
