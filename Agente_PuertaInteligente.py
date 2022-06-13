@@ -75,3 +75,31 @@ class puertaInteligente:
             # Se imprime el mensaje de la excepcion.
             print(e)    
 
+# Ejecucion del programa.
+if __name__ == '__main__':
+    # Se inicia el control de excepciones 
+    try:
+        # Se crea el diccionario de la ubicacion de la puerta inteligente.
+        estadoObjetivo = {'HABITACION1': '0', 'HABITACION2': '0', 'HABITACION3': '0','HABITACION4': '0', 'HABITACION5': '0', 'HABITACION6': '0', 'HABITACION7': '0'}
+        
+        # Se crea una instancia de la clase puertaInteligente.
+        puerta = puertaInteligente()
+
+        # Se define un bucle para el ingreso de una ubicación valida.
+        while True:
+            # Se inicializa el costo
+            costo = 0
+            # Se imprime el menu de opciones.
+            print("\n**************Bienvenido al sistema de control de puertas inteligentes************** \nUbicaciones disponibles: \n HABITACION1, HABITACION2, HABITACION3, HABITACION4, HABITACION5, HABITACION6, HABITACION7, \n Introduzca la palabra 'SALIR' para salir del sistema")
+            # Se pide la ubicacion de la puerta inteligente.
+            ubicacion = input("Por favor ingrese la ubicacion de la puerta que desea abrir, Porfavor Ingrese la ubicacion en Mayusculas\n")
+            # Si la ubicacion ingresada se encuentra fuera del rango de las ubicaciones disponibles.
+            if ubicacion != 'HABITACION1' and ubicacion != 'HABITACION2' and ubicacion != 'HABITACION3' and ubicacion != 'HABITACION4' and ubicacion != 'HABITACION5' and ubicacion != 'HABITACION6' and ubicacion != 'HABITACION7' and ubicacion != 'SALIR':
+                print("La ubicación no es correcta, Por favor intente de nuevo\n")
+                
+            # Si la ubicacion ingresada es igual a la palabra 'SALIR'.
+            elif ubicacion == 'SALIR':
+                # Se imprime un mensaje de despedida.
+                print("Gracias por usar el sistema")
+                # Se termina el bucle para el ingreso de una ubicación valida.
+                break
