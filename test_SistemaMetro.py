@@ -3,6 +3,7 @@ import unittest
 
 # Se importa la clase Grafo de SistemaMetro.py
 from SistemaMetro import Grafo
+# Se importa el método llenar_grafo de SistemaMetro.py
 from SistemaMetro import llenar_grafo
 
 
