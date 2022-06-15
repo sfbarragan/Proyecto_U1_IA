@@ -9,7 +9,8 @@ class puertaInteligente:
     """
     
     def definirHabitacion(self,ubicacion, estado, costo, llave, estadoObjetivo):
-        """_summary_
+        """
+        Este método define la ubicacion, el estado, el costo y la llave de la puerta inteligente, estos parametros serviran para realizar el análisis correspondiente para saber si se debe abrir o no la puerta.
 
         Parametros
         -----------
@@ -90,7 +91,7 @@ if __name__ == '__main__':
             # Se inicializa el costo
             costo = 0
             # Se imprime el menu de opciones.
-            print("\n**************Bienvenido al sistema de control de puertas inteligentes************** \nUbicaciones disponibles: \n HABITACION1, HABITACION2, HABITACION3, HABITACION4, HABITACION5, HABITACION6, HABITACION7, \n Introduzca la palabra 'SALIR' para salir del sistema")
+            print("\n**************Bienvenido al sistema de control de puertas inteligentes************** \nUbicaciones disponibles: \n HABITACION1, HABITACION2, HABITACION3, HABITACION4, HABITACION5, HABITACION6, HABITACION7 \n Introduzca la palabra 'SALIR' para salir del sistema")
             # Se pide la ubicacion de la puerta inteligente.
             ubicacion = input("Por favor ingrese la ubicacion de la puerta que desea abrir, Porfavor Ingrese la ubicacion en Mayusculas\n")
             # Si la ubicacion ingresada se encuentra fuera del rango de las ubicaciones disponibles.
@@ -196,6 +197,8 @@ if __name__ == '__main__':
                                                 break
                                 # Se imprime el costo total.    
                                 print("\nEl costo total de abrir las puertas es de ", costo, " \n")
+                                # Se imprime un mensaje informativo.
+                                print("Estados de la puerta: \n")
                                 # Se imprime el estado objetivo de la puerta en cada ubicación.
                                 print(estadoObjetivo)
                             # Se termina el bucle para el ingreso de una llave valida.
