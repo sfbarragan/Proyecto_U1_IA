@@ -201,10 +201,10 @@ if __name__ == '__main__':
                                 print("Estados de la puerta: \n")
                                 # Se imprime el estado objetivo de la puerta en cada ubicación.
                                 print(estadoObjetivo)
-                            # Se termina el bucle para el ingreso de una llave valida.
-                            break
-                    # Se termina el bucle para el ingreso de un estado valido.
-                    break
+                                # Se termina el bucle para el ingreso de una llave valida.
+                                break
+                        # Se termina el bucle para el ingreso de un estado valido.
+                        break
     # Se captura la excepcion.           
     except Exception as e: 
         # Se imprime el mensaje de error.
